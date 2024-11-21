@@ -10,7 +10,17 @@ COPY package.json ./
 # instalar las dependencias
 RUN npm install 
 
-COPY app.js ./
+COPY . .
+
+# realizar testing
+RUN npm run test
+
+# eliminar las pruebas y archivos no necesarios en PROD 
+RUN rm -rf test/ && rm -rf node_modules/
+
+# ejecutar en modo produccion
+
+RUN npm install --prod
 
 # comando run de la imagen
-CMD [ "node", "app.js" ]
+CMD [ "node", "src/app.js" ]
