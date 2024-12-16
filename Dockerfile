@@ -1,5 +1,7 @@
 # /app /usr /bin /etc /lib /lib64 /opt /sbin /srv /tmp /usr /var
-FROM node:22-alpine3.20
+# FROM --platform=arm64  node:22-alpine3.20
+# FROM node:22-alpine3.20
+FROM --platform=$BUILDPLATFORM node:22-alpine3.20
 
 # cd /app
 WORKDIR /app
